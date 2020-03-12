@@ -1,0 +1,212 @@
+﻿namespace DbContextForMarketSepeti.Migrations
+{
+    using System;
+    using System.Data.Entity;
+    using System.Data.Entity.Migrations;
+    using System.Linq;
+
+    internal sealed class Configuration : DbMigrationsConfiguration<DbContextForMarketSepeti.Context.MarketSepetiContext>
+    {
+        public Configuration()
+        {
+            AutomaticMigrationsEnabled = false;
+        }
+
+        protected override void Seed(DbContextForMarketSepeti.Context.MarketSepetiContext context)
+        {
+            string sql = "";
+
+            #region Test Data
+
+            sql += " DELETE FROM [dbo].[ProductMarkets]";
+            sql += " DELETE FROM [dbo].[Markets]";
+            sql += " DELETE FROM [dbo].[Products]";
+            sql += " DELETE FROM [dbo].[Categories]";
+            sql += " SET IDENTITY_INSERT [dbo].[Categories] ON ";
+            sql += " INSERT [dbo].[Categories] ([Id], [Name]) VALUES (2, N'Gıda')";
+            sql += " INSERT [dbo].[Categories] ([Id], [Name]) VALUES (3, N'İçecek')";
+            sql += " INSERT [dbo].[Categories] ([Id], [Name]) VALUES (4, N'Temizlik')";
+            sql += " INSERT [dbo].[Categories] ([Id], [Name]) VALUES (5, N'Kozmetik')";
+            sql += " INSERT [dbo].[Categories] ([Id], [Name]) VALUES (6, N'Meyve')";
+            sql += " INSERT [dbo].[Categories] ([Id], [Name]) VALUES (7, N'Sebze')";
+            sql += " SET IDENTITY_INSERT [dbo].[Categories] OFF";
+            sql += " SET IDENTITY_INSERT [dbo].[Products] ON ";
+            sql += " INSERT [dbo].[Products] ([Id], [Name], [CategoryId]) VALUES (1, N'Armut', 6)";
+            sql += " INSERT [dbo].[Products] ([Id], [Name], [CategoryId]) VALUES (2, N'Muz', 6)";
+            sql += " INSERT [dbo].[Products] ([Id], [Name], [CategoryId]) VALUES (3, N'Elma', 6)";
+            sql += " INSERT [dbo].[Products] ([Id], [Name], [CategoryId]) VALUES (4, N'Limon', 6)";
+            sql += " INSERT [dbo].[Products] ([Id], [Name], [CategoryId]) VALUES (5, N'Patates', 7)";
+            sql += " INSERT [dbo].[Products] ([Id], [Name], [CategoryId]) VALUES (7, N'Maydanoz', 7)";
+            sql += " INSERT [dbo].[Products] ([Id], [Name], [CategoryId]) VALUES (10, N'Salatalık', 7)";
+            sql += " INSERT [dbo].[Products] ([Id], [Name], [CategoryId]) VALUES (11, N'Kuru Soğan', 7)";
+            sql += " INSERT [dbo].[Products] ([Id], [Name], [CategoryId]) VALUES (12, N'Zeytin Yağ', 2)";
+            sql += " INSERT [dbo].[Products] ([Id], [Name], [CategoryId]) VALUES (13, N'Çorba', 2)";
+            sql += " INSERT [dbo].[Products] ([Id], [Name], [CategoryId]) VALUES (14, N'Makarna', 2)";
+            sql += " INSERT [dbo].[Products] ([Id], [Name], [CategoryId]) VALUES (15, N'Şeker', 2)";
+            sql += " INSERT [dbo].[Products] ([Id], [Name], [CategoryId]) VALUES (16, N'Burn', 3)";
+            sql += " INSERT [dbo].[Products] ([Id], [Name], [CategoryId]) VALUES (17, N'Coca Cola', 3)";
+            sql += " INSERT [dbo].[Products] ([Id], [Name], [CategoryId]) VALUES (18, N'Pepsi', 3)";
+            sql += " INSERT [dbo].[Products] ([Id], [Name], [CategoryId]) VALUES (19, N'Fanta', 3)";
+            sql += " INSERT [dbo].[Products] ([Id], [Name], [CategoryId]) VALUES (20, N'Bingo', 4)";
+            sql += " INSERT [dbo].[Products] ([Id], [Name], [CategoryId]) VALUES (21, N'Pril', 4)";
+            sql += " INSERT [dbo].[Products] ([Id], [Name], [CategoryId]) VALUES (22, N'Sabun', 4)";
+            sql += " INSERT [dbo].[Products] ([Id], [Name], [CategoryId]) VALUES (23, N'Alo', 4)";
+            sql += " INSERT [dbo].[Products] ([Id], [Name], [CategoryId]) VALUES (24, N'Saç Fırçası', 5)";
+            sql += " INSERT [dbo].[Products] ([Id], [Name], [CategoryId]) VALUES (25, N'Tarak', 5)";
+            sql += " INSERT [dbo].[Products] ([Id], [Name], [CategoryId]) VALUES (26, N'Traş Jeli', 5)";
+            sql += " INSERT [dbo].[Products] ([Id], [Name], [CategoryId]) VALUES (27, N'Krem', 5)";
+            sql += " INSERT [dbo].[Products] ([Id], [Name], [CategoryId]) VALUES (28, N'Oje', 5)";
+            sql += " INSERT [dbo].[Products] ([Id], [Name], [CategoryId]) VALUES (29, N'Ruj', 5)";
+            sql += " INSERT [dbo].[Products] ([Id], [Name], [CategoryId]) VALUES (30, N'Parfüm', 5)";
+            sql += " SET IDENTITY_INSERT [dbo].[Products] OFF";
+            sql += " SET IDENTITY_INSERT [dbo].[Markets] ON ";
+            sql += " INSERT [dbo].[Markets] ([Id], [Name], [Address], [PhoneNumber], [OpeningTime], [ClosingTime]) VALUES (1, N'Migros', N'Ankara', N'0000', N'0900', N'2400')";
+            sql += " INSERT [dbo].[Markets] ([Id], [Name], [Address], [PhoneNumber], [OpeningTime], [ClosingTime]) VALUES (2, N'Yağmur', N'Ankara', N'0000', N'0930', N'2300')";
+            sql += " INSERT [dbo].[Markets] ([Id], [Name], [Address], [PhoneNumber], [OpeningTime], [ClosingTime]) VALUES (3, N'Tekin', N'Ankara', N'0000', N'1000', N'2200')";
+            sql += " INSERT [dbo].[Markets] ([Id], [Name], [Address], [PhoneNumber], [OpeningTime], [ClosingTime]) VALUES (4, N'Bim', N'Ankara', N'0000', N'0900', N'2200')";
+            sql += " INSERT [dbo].[Markets] ([Id], [Name], [Address], [PhoneNumber], [OpeningTime], [ClosingTime]) VALUES (5, N'Şok', N'Ankara', N'0000', N'1000', N'2200')";
+            sql += " SET IDENTITY_INSERT [dbo].[Markets] OFF";
+            sql += " SET IDENTITY_INSERT [dbo].[ProductMarkets] ON ";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (1, 1, 1, 10)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (2, 1, 2, 11)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (3, 1, 3, 11.5)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (4, 1, 4, 10.99)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (5, 1, 5, 10.5)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (6, 2, 1, 15)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (7, 2, 2, 14.99)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (8, 2, 3, 17)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (9, 2, 4, 13)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (10, 2, 5, 15.22)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (11, 3, 1, 14)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (12, 3, 2, 15)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (13, 3, 3, 17)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (14, 3, 4, 16)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (15, 3, 5, 10.99)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (16, 4, 1, 4)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (17, 4, 2, 7)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (18, 4, 3, 3.99)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (19, 4, 4, 7.88)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (20, 4, 5, 8.66)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (21, 5, 1, 2)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (22, 5, 2, 3)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (23, 5, 3, 4.85)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (24, 5, 4, 5.55)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (25, 5, 5, 5)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (26, 7, 1, 2)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (27, 7, 2, 3.95)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (28, 7, 3, 7.66)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (29, 7, 4, 1.95)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (30, 7, 5, 2.66)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (31, 10, 1, 7)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (33, 10, 2, 8)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (35, 10, 3, 6.95)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (36, 10, 4, 7.88)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (37, 10, 5, 6.57)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (38, 11, 1, 99)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (39, 11, 2, 68)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (40, 11, 3, 975)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (41, 11, 4, 999)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (42, 11, 5, 1000)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (43, 12, 1, 100000)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (44, 12, 2, 10000)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (45, 12, 3, 20648)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (46, 12, 4, 4566854)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (47, 12, 5, 984284)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (48, 13, 1, 45468)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (49, 13, 2, 1535)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (50, 13, 3, 45421)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (51, 13, 4, 48665)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (52, 13, 5, 9454354)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (53, 14, 1, 45)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (54, 14, 2, 52)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (55, 14, 3, 645)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (56, 14, 4, 621)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (57, 14, 5, 25)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (58, 15, 1, 52)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (59, 15, 2, 15552)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (60, 15, 3, 4545)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (61, 15, 4, 45634)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (62, 15, 5, 1545)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (63, 16, 1, 15)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (64, 16, 2, 52)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (65, 16, 3, 153)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (66, 16, 4, 153)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (67, 16, 5, 541)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (68, 17, 1, 1563)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (69, 17, 2, 59)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (70, 17, 3, 59)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (72, 17, 4, 45)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (73, 17, 5, 1456)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (74, 18, 1, 156)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (75, 18, 2, 156)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (76, 18, 3, 2385)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (77, 18, 4, 6245)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (78, 18, 5, 25)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (79, 19, 1, 4)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (80, 19, 2, 655)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (81, 19, 3, 15)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (82, 19, 4, 5235)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (83, 19, 5, 2)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (84, 20, 1, 1456)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (85, 20, 2, 15)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (86, 20, 3, 52)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (87, 20, 4, 53)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (88, 20, 5, 153)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (89, 21, 1, 531)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (90, 21, 2, 531)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (91, 21, 3, 154341)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (92, 21, 4, 531)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (93, 21, 5, 153)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (94, 22, 1, 4531)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (95, 22, 2, 22222)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (96, 22, 3, 2222)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (97, 22, 4, 451)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (98, 22, 5, 1153)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (99, 23, 1, 153)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (100, 23, 2, 153)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (101, 23, 3, 4531)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (102, 23, 4, 135)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (103, 23, 5, 56)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (104, 24, 1, 546)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (105, 24, 2, 46)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (106, 24, 3, 156)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (107, 24, 4, 56)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (108, 24, 5, 256)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (109, 25, 1, 56)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (110, 25, 2, 256)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (111, 25, 3, 4865)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (112, 25, 4, 41)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (113, 25, 5, 5)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (114, 26, 1, 456)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (116, 26, 2, 256)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (117, 26, 3, 256)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (118, 26, 4, 16151)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (119, 26, 5, 1561)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (120, 27, 1, 4984)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (121, 27, 2, 4865)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (122, 27, 3, 289)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (123, 27, 4, 2486)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (124, 27, 5, 5865)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (125, 28, 1, 4168)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (126, 28, 2, 28942)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (127, 28, 3, 2892)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (128, 28, 4, 586559)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (129, 28, 5, 256)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (130, 29, 1, 5289)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (131, 29, 2, 58)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (132, 29, 3, 468)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (133, 29, 4, 456)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (134, 29, 5, 565)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (135, 30, 1, 1)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (136, 30, 2, 2)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (137, 30, 3, 3)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (138, 30, 4, 4)";
+            sql += " INSERT [dbo].[ProductMarkets] ([Id], [ProductId], [MarketId], [Price]) VALUES (139, 30, 5, 5)";
+            sql += " SET IDENTITY_INSERT [dbo].[ProductMarkets] OFF";
+
+            #endregion
+
+            context.Database.ExecuteSqlCommand(sql);
+        }
+    }
+}

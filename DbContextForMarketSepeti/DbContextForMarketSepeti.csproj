@@ -52,6 +52,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\MarketSepetiContext.cs" />
+    <Compile Include="Migrations\202003121512180_v01.cs" />
+    <Compile Include="Migrations\202003121512180_v01.designer.cs">
+      <DependentUpon>202003121512180_v01.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -63,6 +68,11 @@
       <Project>{FCC7623C-AAC0-480F-AEBB-508CE6D51A80}</Project>
       <Name>EntitiesForMarketSepeti</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202003121512180_v01.resx">
+      <DependentUpon>202003121512180_v01.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
